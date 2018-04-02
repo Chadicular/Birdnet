@@ -49,6 +49,9 @@ def get_bird_images(bird_name):
         'https://nationalzoo.si.edu/scbi/migratorybirds/featured_photo/bird.cfm?pix={0}'.format(bird_name))
     html = BeautifulSoup(resp, 'html.parser')
 
+    bird_name = bird_name.replace('/', '_')
+    bird_name = bird_name.replace('?', '')
+
     # Make sure an output folder exists
     if not os.path.exists('birds/{0}'.format(bird_name)):
         os.makedirs('birds/{0}'.format(bird_name))
